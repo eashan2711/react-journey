@@ -5,9 +5,9 @@ function App() {
     <div>
       <h1>Hello Eashan 🚀</h1>
 
-      <UserCard name="Eashan" age="25" />
-      <UserCard name="Rahul" age="28" />
-      <UserCard name="Ankit" age="30" />
+      <UserCard name="Eashan" />
+      <UserCard name="Rahul" />
+      <UserCard name="Ankit" />
 
     </div>
   );
