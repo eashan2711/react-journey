@@ -1,14 +1,15 @@
-import UserCard from "./UserCard";
+import { useState } from "react";
 
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
     <div>
-      <h1>Hello Eashan 🚀</h1>
+      <h1>Counter: {count}</h1>
 
-      <UserCard name="Eashan" />
-      <UserCard name="Rahul" />
-      <UserCard name="Ankit" />
-
+      <button onClick={() => setCount(count + 1)}>
+        Increase
+      </button>
     </div>
   );
 }
