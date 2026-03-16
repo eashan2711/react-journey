@@ -1,29 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [todos, setTodos] = useState(["Learn React", "Build Projects"]);
-  const [input, setInput] = useState("");
+  const [users, setUsers] = useState([]);
 
-  const addTodo = () => {
-    setTodos([...todos, input]);
-    setInput("");
-  };
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  }, []);
 
   return (
     <div>
-      <h1>Todo List</h1>
-
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Enter todo"
-      />
-
-      <button onClick={addTodo}>Add</button>
+      <h1>Users List</h1>
 
       <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
         ))}
       </ul>
     </div>
