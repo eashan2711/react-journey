@@ -1,4 +1,6 @@
 import { useState } from "react";
+import SearchBox from "./SearchBox";
+import UsersList from "./UsersList";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -9,21 +11,9 @@ function App() {
     <div>
       <h1>Search Users</h1>
 
-      <input
-        placeholder="Search user..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <SearchBox search={search} setSearch={setSearch} />
 
-      <ul>
-        {users
-          .filter((user) =>
-            user.toLowerCase().includes(search.toLowerCase())
-          )
-          .map((user) => (
-            <li key={user}>{user}</li>
-          ))}
-      </ul>
+      <UsersList users={users} search={search} />
     </div>
   );
 }
