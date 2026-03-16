@@ -1,22 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => setUsers(data));
-  }, []);
+  const users = ["Eashan", "Rahul", "Ankit", "Rohit"];
 
   return (
     <div>
-      <h1>Users List</h1>
+      <h1>Search Users</h1>
+
+      <input
+        placeholder="Search user..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
       <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.name}</li>
-        ))}
+        {users
+          .filter((user) =>
+            user.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((user) => (
+            <li key={user}>{user}</li>
+          ))}
       </ul>
     </div>
   );
